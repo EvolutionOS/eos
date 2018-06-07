@@ -822,7 +822,7 @@ void mongo_db_plugin::plugin_initialize(const variables_map& options)
       mongocxx::uri uri = mongocxx::uri{uri_str};
       my->db_name = uri.database();
       if (my->db_name.empty())
-         my->db_name = "EOS";
+         my->db_name = "EVO";
       my->mongo_conn = mongocxx::client{uri};
 
       // add callback to chain_controller config
