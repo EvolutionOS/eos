@@ -554,7 +554,7 @@ BOOST_FIXTURE_TEST_CASE( stake_from_refund, eosio_system_tester ) try {
    BOOST_REQUIRE_EQUAL( core_from_string("210.0000"), total["cpu_weight"].as<asset>());
    refund = get_refund_request( "alice1111111" );
    BOOST_TEST_REQUIRE( refund.is_null() );
-   //200 EOS should be taken from alice's account
+   //200 EVO should be taken from alice's account
    BOOST_REQUIRE_EQUAL( core_from_string("500.0000"), get_balance( "alice1111111" ) );
 
 } FC_LOG_AND_RETHROW()
@@ -685,7 +685,7 @@ BOOST_FIXTURE_TEST_CASE( vote_for_producer, eosio_system_tester, * boost::unit_t
    BOOST_TEST_REQUIRE( stake2votes(core_from_string("88.8888")) == prod["total_votes"].as_double() );
 
    //carol1111111 unstakes part of the stake
-   BOOST_REQUIRE_EQUAL( success(), unstake( "carol1111111", core_from_string("2.0000"), core_from_string("0.0002")/*"2.0000 EOS", "0.0002 EOS"*/ ) );
+   BOOST_REQUIRE_EQUAL( success(), unstake( "carol1111111", core_from_string("2.0000"), core_from_string("0.0002")/*"2.0000 EVO", "0.0002 EVO"*/ ) );
 
    //should decrease alice1111111's total_votes
    prod = get_producer_info( "alice1111111" );
@@ -1996,7 +1996,7 @@ BOOST_FIXTURE_TEST_CASE( elect_producers /*_and_parameters*/, eosio_system_teste
    BOOST_REQUIRE_EQUAL( success(), regproducer( "defproducer2", 2) );
    BOOST_REQUIRE_EQUAL( success(), regproducer( "defproducer3", 3) );
 
-   //stake more than 15% of total EOS supply to activate chain
+   //stake more than 15% of total EVO supply to activate chain
    transfer( "eosio", "alice1111111", core_from_string("600000000.0000"), "eosio" );
    BOOST_REQUIRE_EQUAL( success(), stake( "alice1111111", "alice1111111", core_from_string("300000000.0000"), core_from_string("300000000.0000") ) );
    //vote for producers
