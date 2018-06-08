@@ -594,7 +594,7 @@ BOOST_FIXTURE_TEST_CASE( producer_register_unregister, eosio_system_tester ) try
    BOOST_REQUIRE_EQUAL( "http://block.two", info["url"].as_string() );
    BOOST_REQUIRE_EQUAL( 1, info["location"].as_int64() );
 
-   auto key2 =  fc::crypto::public_key( std::string("EOS5jnmSKrzdBHE9n8hw58y7yxFWBC8SNiG7m8S1crJH3KvAnf9o6") );
+   auto key2 =  fc::crypto::public_key( std::string("EVO5jnmSKrzdBHE9n8hw58y7yxFWBC8SNiG7m8S1crJH3KvAnf9o6") );
    BOOST_REQUIRE_EQUAL( success(), push_action(N(alice1111111), N(regproducer), mvo()
                                                ("producer",  "alice1111111")
                                                ("producer_key", key2 )
@@ -750,19 +750,19 @@ BOOST_FIXTURE_TEST_CASE( unregistered_producer_voting, eosio_system_tester, * bo
 } FC_LOG_AND_RETHROW()
 
 
-BOOST_FIXTURE_TEST_CASE( more_than_30_producer_voting, eosio_system_tester ) try {
+BOOST_FIXTURE_TEST_CASE( more_than_5_producer_voting, eosio_system_tester ) try {
    issue( "bob111111111", core_from_string("2000.0000"),  config::system_account_name );
    BOOST_REQUIRE_EQUAL( success(), stake( "bob111111111", core_from_string("13.0000"), core_from_string("0.5791") ) );
    REQUIRE_MATCHING_OBJECT( voter( "bob111111111", core_from_string("13.5791") ), get_voter_info( "bob111111111" ) );
 
    //bob111111111 should not be able to vote for alice1111111 who is not a producer
    BOOST_REQUIRE_EQUAL( wasm_assert_msg( "attempt to vote for too many producers" ),
-                        vote( N(bob111111111), vector<account_name>(31, N(alice1111111)) ) );
+                        vote( N(bob111111111), vector<account_name>(6, N(alice1111111)) ) );
 
 } FC_LOG_AND_RETHROW()
 
 
-BOOST_FIXTURE_TEST_CASE( vote_same_producer_30_times, eosio_system_tester ) try {
+BOOST_FIXTURE_TEST_CASE( vote_same_producer_5_times, eosio_system_tester ) try {
    issue( "bob111111111", core_from_string("2000.0000"),  config::system_account_name );
    BOOST_REQUIRE_EQUAL( success(), stake( "bob111111111", core_from_string("50.0000"), core_from_string("50.0000") ) );
    REQUIRE_MATCHING_OBJECT( voter( "bob111111111", core_from_string("100.0000") ), get_voter_info( "bob111111111" ) );
@@ -780,7 +780,7 @@ BOOST_FIXTURE_TEST_CASE( vote_same_producer_30_times, eosio_system_tester ) try 
 
    //bob111111111 should not be able to vote for alice1111111 who is not a producer
    BOOST_REQUIRE_EQUAL( wasm_assert_msg( "producer votes must be unique and sorted" ),
-                        vote( N(bob111111111), vector<account_name>(30, N(alice1111111)) ) );
+                        vote( N(bob111111111), vector<account_name>(5, N(alice1111111)) ) );
 
    auto prod = get_producer_info( "alice1111111" );
    BOOST_TEST_REQUIRE( 0 == prod["total_votes"].as_double() );

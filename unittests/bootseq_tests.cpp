@@ -255,9 +255,8 @@ BOOST_FIXTURE_TEST_CASE( bootseq_test, bootseq_tester ) {
                                 ("producers", producers)
                      );
         };
-        votepro( N(b1), { N(proda), N(prodb), N(prodc), N(prodd), N(prode), N(prodf), N(prodg),
-                           N(prodh), N(prodi), N(prodj), N(prodk), N(prodl), N(prodm), N(prodn),
-                           N(prodo), N(prodp), N(prodq), N(prodr), N(prods), N(prodt), N(produ)} );
+        votepro( N(b1), {N(proda)} );
+        votepro( N(b1), {N(prodo), N(prodt), N(produ)} );
         votepro( N(whale2), {N(runnerup1), N(runnerup2), N(runnerup3)} );
         votepro( N(whale3), {N(proda), N(prodb), N(prodc), N(prodd), N(prode)} );
 
