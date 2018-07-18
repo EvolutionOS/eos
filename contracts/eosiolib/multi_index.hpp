@@ -757,7 +757,13 @@ class multi_index
          return *result;
       }
 
-      const_iterator find( uint64_t primary )const {
+	  const int get_rank(uint64_t primary, const char* error_msg = "unable to find key")const {
+		  auto result = find(primary);
+		  eosio_assert(result != cend(), error_msg);
+		  return result - cbegin();
+	  }
+	  
+	  const_iterator find( uint64_t primary )const {
          auto itr2 = std::find_if(_items_vector.rbegin(), _items_vector.rend(), [&](const item_ptr& ptr) {
             return ptr._item->primary_key() == primary;
          });

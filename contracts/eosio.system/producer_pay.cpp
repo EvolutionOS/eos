@@ -69,6 +69,8 @@ namespace eosiosystem {
       require_auth(owner);
 
       const auto& prod = _producers.get( owner );
+	  //const int prod_rank = _producers.get_rank(owner);
+
       eosio_assert( prod.active(), "producer does not have an active key" );
 
       eosio_assert( _gstate.total_activated_stake >= min_activated_stake,
@@ -113,8 +115,9 @@ namespace eosiosystem {
       }
       int64_t producer_per_vote_pay = 0;
       if( _gstate.total_producer_vote_weight > 0 ) {
-         producer_per_vote_pay  = int64_t((_gstate.pervote_bucket * prod.total_votes ) / _gstate.total_producer_vote_weight);
-      }
+         //producer_per_vote_pay  = int64_t((_gstate.pervote_bucket * prod.total_votes ) / _gstate.total_producer_vote_weight);
+		 producer_per_vote_pay = int64_t((_gstate.pervote_bucket * prod.total_votes) / _gstate.total_producer_vote_weight);
+	  }
       if( producer_per_vote_pay < min_pervote_daily_pay ) {
          producer_per_vote_pay = 0;
       }
