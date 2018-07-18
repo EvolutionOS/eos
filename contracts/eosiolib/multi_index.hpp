@@ -760,7 +760,7 @@ class multi_index
 	  const int get_rank(uint64_t primary, const char* error_msg = "unable to find key")const {
 		  auto result = find(primary);
 		  eosio_assert(result != cend(), error_msg);
-		  return result - cbegin();
+		  return (const int)(result - cbegin());
 	  }
 	  
 	  const_iterator find( uint64_t primary )const {

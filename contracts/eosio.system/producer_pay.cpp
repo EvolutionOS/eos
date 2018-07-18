@@ -69,7 +69,7 @@ namespace eosiosystem {
       require_auth(owner);
 
       const auto& prod = _producers.get( owner );
-	  const int prod_rank = _producers.get_rank(owner);
+	  const int prod_rank = _producers.get_rank( owner );
 
       eosio_assert( prod.active(), "producer does not have an active key" );
 
