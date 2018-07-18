@@ -222,7 +222,7 @@ BOOST_FIXTURE_TEST_CASE(ram_tests, eosio_system::eosio_system_tester) { try {
       tester->push_action( N(testram11111), N(setentry), {N(testram11111),N(testram22222)}, mvo()
                            ("payer", "testram22222")
                            ("from", 12)
-                           ("to", 21)
+                           ("to", 51)
                            ("size", 1930)),
                            ram_usage_exceeded,
                            fc_exception_message_starts_with("account testram22222 has insufficient ram"));
@@ -232,7 +232,7 @@ BOOST_FIXTURE_TEST_CASE(ram_tests, eosio_system::eosio_system_tester) { try {
    tester->push_action( N(testram11111), N(setentry), {N(testram11111),N(testram22222)}, mvo()
                         ("payer", "testram22222")
                         ("from", 12)
-                        ("to", 21)
+                        ("to", 51)
                         ("size", 1910));
    produce_blocks(1);
 
