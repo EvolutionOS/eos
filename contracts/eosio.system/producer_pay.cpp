@@ -141,6 +141,7 @@ namespace eosiosystem {
 			  // 30% of _gstate.perrank_bucket is shared like this: 
 			  //    rank 1 = 51 parts
 			  //    rank 2 = 50 parts
+			  //    .................
 			  //    rank 51 = 1 part
 			  auto per_rank_share = int64_t((((double)_gstate.perrank_bucket) * 0.3) / (51.0 * 52.0 / 2.0) * (52.0 - prod_rank));
 			  producer_per_rank_pay = equal_share + per_rank_share;
