@@ -1496,7 +1496,8 @@ BOOST_FIXTURE_TEST_CASE(multiple_producer_pay, eosio_system_tester, * boost::uni
       const asset    initial_supply            = get_token_supply();
       const asset    initial_bpay_balance      = get_balance(N(eosio.bpay));
       const asset    initial_vpay_balance      = get_balance(N(eosio.vpay));
-      const asset    initial_balance           = get_balance(prod_name);
+	  const asset    initial_rpay_balance      = get_balance(N(eosio.rpay));
+	  const asset    initial_balance           = get_balance(prod_name);
       const uint32_t initial_unpaid_blocks     = get_producer_info(prod_name)["unpaid_blocks"].as<uint32_t>();
 
       BOOST_REQUIRE_EQUAL(success(), push_action(prod_name, N(claimrewards), mvo()("owner", prod_name)));
@@ -1510,7 +1511,8 @@ BOOST_FIXTURE_TEST_CASE(multiple_producer_pay, eosio_system_tester, * boost::uni
       const asset    supply            = get_token_supply();
       const asset    bpay_balance      = get_balance(N(eosio.bpay));
       const asset    vpay_balance      = get_balance(N(eosio.vpay));
-      const asset    balance           = get_balance(prod_name);
+	  const asset    rpay_balance      = get_balance(N(eosio.rpay));
+	  const asset    balance           = get_balance(prod_name);
       const uint32_t unpaid_blocks     = get_producer_info(prod_name)["unpaid_blocks"].as<uint32_t>();
 
       const uint64_t usecs_between_fills = claim_time - initial_claim_time;
@@ -1572,7 +1574,8 @@ BOOST_FIXTURE_TEST_CASE(multiple_producer_pay, eosio_system_tester, * boost::uni
       const asset    initial_supply            = get_token_supply();
       const asset    initial_bpay_balance      = get_balance(N(eosio.bpay));
       const asset    initial_vpay_balance      = get_balance(N(eosio.vpay));
-      const asset    initial_balance           = get_balance(prod_name);
+	  const asset    initial_rpay_balance      = get_balance(N(eosio.rpay));
+	  const asset    initial_balance           = get_balance(prod_name);
       const uint32_t initial_unpaid_blocks     = get_producer_info(prod_name)["unpaid_blocks"].as<uint32_t>();
 
       BOOST_REQUIRE_EQUAL(success(), push_action(prod_name, N(claimrewards), mvo()("owner", prod_name)));
@@ -1586,7 +1589,8 @@ BOOST_FIXTURE_TEST_CASE(multiple_producer_pay, eosio_system_tester, * boost::uni
       const asset    supply            = get_token_supply();
       const asset    bpay_balance      = get_balance(N(eosio.bpay));
       const asset    vpay_balance      = get_balance(N(eosio.vpay));
-      const asset    balance           = get_balance(prod_name);
+	  const asset    rpay_balance      = get_balance(N(eosio.rpay));
+	  const asset    balance           = get_balance(prod_name);
       const uint32_t unpaid_blocks     = get_producer_info(prod_name)["unpaid_blocks"].as<uint32_t>();
 
       const uint64_t usecs_between_fills = claim_time - initial_claim_time;
